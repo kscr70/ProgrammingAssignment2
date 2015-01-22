@@ -2,7 +2,8 @@
 ## of that matrix and stores it in a cache that can be accessed 
 ## If the original matrix has not been changed. 
 
-## Write a short comment describing this function
+## The makeCachematrix funtion creates a list of functions that can
+## that can be called on with the cacheSolve function.
 
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
@@ -10,12 +11,12 @@ makeCacheMatrix <- function(x = matrix()) {
                 x <<- y
                 m <<- NULL
         }
-        get <- function() x
-        setMatrix <- function(solve) m <<- solve
-        getMatrix <- function() m
+        get <- function() x  # assigns matrix(x) to get
+        setInvMatrix <- function(solve) m <<- solve 
+        getInvMatrix <- function() m
         list(set = set, get = get,
-             setMatrix = setMatrix,
-             getMatrix = getMatrix)
+             setInvMatrix = setInvMatrix,
+             getInvMatrix = getInvMatrix)
         
 }
 
@@ -23,13 +24,13 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
-        m <- x$getMatrix()
+        m <- x$getInvMatrix()
         if(!is.null(m)) {
                 message("getting cached data")
                 return(m)
         }
         data <- x$get()
         m <- solve(data, ...)
-        x$setMatrix(m)
+        x$setInvMatrix(m)
         m
 }
