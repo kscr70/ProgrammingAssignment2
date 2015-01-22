@@ -1,5 +1,6 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These functions take a square matrix and calculates the inverse 
+## of that matrix and stores it in a cache that can be accessed 
+## If the original matrix has not been changed. 
 
 ## Write a short comment describing this function
 
